@@ -1,0 +1,576 @@
+{
+	"info": {
+		"_postman_id": "5e7e4507-0387-4712-b0a5-11c8e2dd41cc",
+		"name": "[Challenge] Extra",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44546721",
+		"_collection_link": "https://pedroafonso-4579402.postman.co/workspace/ServeRest~260545a6-d59f-441b-977b-4cfd8d7b0191/collection/44546721-5e7e4507-0387-4712-b0a5-11c8e2dd41cc?action=share&source=collection_link&creator=44546721"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Criar usuário com dados válidos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code é 201 Created\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensagem de sucesso presente\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.include(\"Cadastro realizado com sucesso\");\r",
+									"});\r",
+									"\r",
+									"pm.collectionVariables.set(\"ultimoCriadoemail\", pm.request.body.raw.match(/\"email\":\\s*\"(.+?)\"/)[1]);\r",
+									"\r",
+									"pm.collectionVariables.set(\r",
+									"    \"ultimoCriadosenha\",\r",
+									"    pm.request.body.raw.match(/\"password\":\\s*\"(.+?)\"/)[1]\r",
+									");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"João Automatizador da Silva\",\r\n  \"email\": \"joao_automatizador_{{$randomInt}}@qa.com.br\",\r\n  \"password\": \"2345678\",\r\n  \"administrador\": \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{url_base}}/usuarios",
+							"protocol": "https",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar usuário com e-mail já existente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code é 400 - Email já cadastrado\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensagem de erro correta\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.include(\"Este email já está sendo usado\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"João Automatizador da Silva\",\r\n  \"email\": \"{{ultimoCriadoemail}}\",\r\n  \"password\": \"2345678\",\r\n  \"administrador\": \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{url_base}}/usuarios",
+							"protocol": "https",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar usuário com e-mail inválido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code é 400 - E-mail inválido\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"João Automatizador da Silva\",\r\n  \"email\": \"{{emailInvalido}}\",\r\n  \"password\": \"2345678\",\r\n  \"administrador\": \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{url_base}}/usuarios",
+							"protocol": "https",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar usuário com senha fora do limite",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code é 400 - Senha inválida\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"João Automatizador da Silva\",\r\n  \"email\": \"joao_automatizador_{{$randomInt}}@qa.com.br\",\r\n  \"password\": \"{{senhaInvalida}}\",\r\n  \"administrador\": \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{url_base}}/usuarios",
+							"protocol": "https",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login com dados válidos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code é 200 - Login bem-sucedido\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensagem de sucesso na resposta\", function () {\r",
+									"    pm.expect(jsonData.message).to.include(\"Login realizado com sucesso\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Token Bearer recebido na resposta\", function () {\r",
+									"    pm.expect(jsonData.authorization).to.exist;\r",
+									"    pm.expect(jsonData.authorization).to.include(\"Bearer\");\r",
+									"});\r",
+									"\r",
+									"pm.collectionVariables.set(\"token_login\", jsonData.authorization.replace(\"Bearer \", \"\"));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{ultimoCriadoemail}}\",\r\n  \"password\": \"{{ultimoCriadosenha}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{url_base}}/login",
+							"protocol": "https",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login com senha incorreta",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code é 401 - Senha incorreta\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensagem de erro correta\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message.toLowerCase()).to.include(\"email e/ou senha inválidos\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{ultimoCriadoemail}}\",\r\n  \"password\": \"{{$randomInt}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{url_base}}/login",
+							"protocol": "https",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Produtos",
+			"item": [
+				{
+					"name": "Criar produto com token de admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code é 201 - Produto criado com sucesso\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensagem de sucesso na resposta\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.include(\"Cadastro realizado com sucesso\");\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.collectionVariables.set(\"produtoUltimo\", jsonData._id);\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.collectionVariables.set(\"nome_produtoUltimo\", pm.request.body.raw.match(/\"nome\":\\s*\"(.+?)\"/)[1]);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"TV Compasso - MODELO {{$randomInt}}\",\r\n  \"preco\": {{$randomInt}},\r\n  \"descricao\": \"TV\",\r\n  \"quantidade\": {{$randomInt}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{url_base}}/produtos",
+							"protocol": "https",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"produtos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[DEPENDÊNCIA] Criar produto com nome já existente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code é 400 - Nome duplicado\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensagem de erro correta\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.include(\"Já existe produto com esse nome\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"{{nome_produtoUltimo}}\",\r\n  \"preco\": 2000,\r\n  \"descricao\": \"Teste duplicado\",\r\n  \"quantidade\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{url_base}}/produtos",
+							"protocol": "https",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"produtos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Carrinhos",
+			"item": [
+				{
+					"name": "Criar carrinho com token válido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code é 201 - Carrinho criado com sucesso\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensagem de sucesso recebida\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.include(\"Cadastro realizado com sucesso\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"produtos\": [\r\n    {\r\n      \"idProduto\": \"{{produtoUltimo}}\",\r\n      \"quantidade\": 1\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{url_base}}/carrinhos",
+							"protocol": "https",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"carrinhos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancelar carrinho (estoque devolvido)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code é 200 - Carrinho cancelado\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensagem de sucesso no cancelamento\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.include(\"Registro excluído com sucesso\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://{{url_base}}/carrinhos/cancelar-compra",
+							"protocol": "https",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"carrinhos",
+								"cancelar-compra"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token_login}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"pm.test(\"Status code é 200 ou 201\", function () {\r",
+					"    pm.expect([200, 201]).to.include(pm.response.code);\r",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url_base",
+			"value": "serverest.dev",
+			"type": "string"
+		},
+		{
+			"key": "ultimoCriadoemail",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "emailInvalido",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "senhaInvalida",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "ultimoCriadosenha",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "token_login",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "produtoUltimo",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "nome_produtoUltimo",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
