@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="Imagens/Logo_compass_letra_branca.png" alt="Compass UOL logo" width="400"/>
+	img width="300" alt="Compass UOL Logo" src="https://github.com/user-attachments/assets/4618da97-4b4b-45d9-91e7-0e8fd6e622c6">
 </p>
 
 # 📁 Repositório de Materiais QA - Formação Compass UOL
