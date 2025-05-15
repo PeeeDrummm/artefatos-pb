@@ -26,4 +26,4 @@ class Calculadora:
 
 # Tenho costume de dar espaço entre o nome do método e os parênteses
 # Logo a IA presente no PyCharm, me sugeriu a remoção desses espaços
-# Pois é uma boa prática do PEP8. Então de certa for foi utilizado IA para isso.
+# Pois é uma boa prática do PEP8. Então de certa forma foi utilizado IA para isso.

@@ -28,6 +28,7 @@ def test_multiplicar(calc):
     assert calc.multiplicar(7, 17) == 119
 
 def test_dividir(calc):
+    # Pytest estava comparando com todas as casas decimais
     # Usado round para arredondar o resultado com duas casas decimais
     assert round(calc.dividir(17, 7), 2) == 2.43
 
@@ -49,4 +50,4 @@ def test_porcentagem(calc):
 
 # Tenho costume de dar espaço entre o nome do método e os parênteses
 # Logo a IA presente no PyCharm, me sugeriu a remoção desses espaços
-# Pois é uma boa prática do PEP8. Então de certa for foi utilizado IA para isso.
+# Pois é uma boa prática do PEP8. Então de certa forma foi utilizado IA para isso.
