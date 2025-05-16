@@ -24,7 +24,7 @@ O versionamento é feito por branches, garantindo um histórico limpo e rastreá
 - **Semana 6**: Aprofundando em Testes Front-end
 - **Semana 7**: Introdução a APIs REST
 - **Semana 8**: Challenge 01  
-- **Semana 9**: Base versionamento e programação Python [🚧 Em progresso]
+- **_[🚧 Em progresso]_** **Semana 9**: Base versionamento e programação Python
 
 ---
 
