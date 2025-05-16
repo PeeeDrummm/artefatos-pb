@@ -1,6 +1,4 @@
-<p align="center">
-	img width="300" alt="Compass UOL Logo" src="https://github.com/user-attachments/assets/4618da97-4b4b-45d9-91e7-0e8fd6e622c6">
-</p>
+<img width="300" alt="Screenshot 2023-08-14 at 12 37 59 PM" src="https://github.com/user-attachments/assets/4618da97-4b4b-45d9-91e7-0e8fd6e622c6">
 
 # 📁 Repositório de Materiais QA - Formação Compass UOL
 
