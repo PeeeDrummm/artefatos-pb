@@ -16,15 +16,16 @@ O versionamento é feito por branches, garantindo um histórico limpo e rastreá
 
 ## 📁 Estrutura por Semana
 
-- **Semana 1**: Onboarding e Metodologias Ágeis
-- **Semana 2**: Análise de Requisitos & Intro QA
-- **Semana 3**: Introdução à área QA + AI Core
-- **Semana 4**: Fundamentos QA CTFL
-- **Semana 5**: Aprofundando em Análise de Testes e Reports de Issues
-- **Semana 6**: Aprofundando em Testes Front-end
-- **Semana 7**: Introdução a APIs REST
-- **Semana 8**: Challenge 01  
-- **_[🚧 Em progresso]_** **Semana 9**: Base versionamento e programação Python
+- **Semana 01**: Onboarding e Metodologias Ágeis
+- **Semana 02**: Análise de Requisitos & Intro QA
+- **Semana 03**: Introdução à área QA + AI Core
+- **Semana 04**: Fundamentos QA CTFL
+- **Semana 05**: Aprofundando em Análise de Testes e Reports de Issues
+- **Semana 06**: Aprofundando em Testes Front-end
+- **Semana 07**: Introdução a APIs REST
+- **Semana 08**: Challenge 01  
+- **Semana 09**: Base versionamento e programação Python
+- **_[🚧 Em progresso]_** **Semana 10**: Base Testes Automatizados + Testes automatizados de APIs REST com Robot Framework
 
 ---
 
@@ -43,6 +44,7 @@ Cada evolução, estudo ou entrega é feita em uma branch separada e depois inte
 ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white)
 ![VSCode](https://img.shields.io/badge/-VSCode-007ACC?style=flat&logo=visual-studio-code&logoColor=white)
 ![PyCharm](https://img.shields.io/badge/-PyCharm-000000?style=flat&logo=pycharm&logoColor=white)
+![Robot Framework](https://img.shields.io/badge/-Robot_Framework-000000?style=flat&logo=robot-framework&logoColor=white)
 
 ---
 
