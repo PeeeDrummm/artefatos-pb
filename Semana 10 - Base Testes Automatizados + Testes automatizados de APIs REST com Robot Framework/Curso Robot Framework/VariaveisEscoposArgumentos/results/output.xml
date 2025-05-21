@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.10.6 on win32)" generated="2025-05-20T16:31:31.289907" rpa="false" schemaversion="5">
+<suite id="s1" name="DesafioDicionario" source="C:\Users\Pedro\Documents\Compass UOL\Documentos\Semana 10 - Base Testes Automatizados + Testes automatizados de APIs REST com Robot Framework\Curso Robot Framework\VariaveisEscoposArgumentos\DesafioDicionario.robot">
+<test id="s1-t1" name="Imprimir Meses e Dias" line="20">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${MESES_DIAS.Janeiro} dias</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-20T16:31:31.323896" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${MESES_DIAS.Fevereiro} dias</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-20T16:31:31.324931" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${MESES_DIAS.Marco} dias</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-20T16:31:31.325896" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${MESES_DIAS.Abril} dias</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-20T16:31:31.325896" elapsed="0.001002"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${MESES_DIAS.Maio} dias</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-20T16:31:31.326898" elapsed="0.000999"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${MESES_DIAS.Junho} dias</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-20T16:31:31.327897" elapsed="0.001002"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${MESES_DIAS.Julho} dias</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-20T16:31:31.328899" elapsed="0.000999"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${MESES_DIAS.Agosto} dias</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-20T16:31:31.329898" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${MESES_DIAS.Setembro} dias</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-20T16:31:31.330899" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${MESES_DIAS.Outubro} dias</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-20T16:31:31.331896" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${MESES_DIAS.Novembro} dias</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-20T16:31:31.332896" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${MESES_DIAS.Dezembro} dias</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-20T16:31:31.332896" elapsed="0.001003"/>
+</kw>
+<status status="PASS" start="2025-05-20T16:31:31.322897" elapsed="0.011002"/>
+</test>
+<doc>Teste para imprimir meses do ano com a quantidade de dias usando dicionário</doc>
+<status status="PASS" start="2025-05-20T16:31:31.292910" elapsed="0.041989"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="DesafioDicionario" id="s1" pass="1" fail="0" skip="0">DesafioDicionario</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
