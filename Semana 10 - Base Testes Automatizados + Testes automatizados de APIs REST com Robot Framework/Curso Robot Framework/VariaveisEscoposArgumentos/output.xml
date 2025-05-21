@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.10.6 on win32)" generated="2025-05-20T17:43:39.492724" rpa="false" schemaversion="5">
+<suite id="s1" name="DesafioKeywords" source="C:\Users\Pedro\Documents\Compass UOL\Documentos\Semana 10 - Base Testes Automatizados + Testes automatizados de APIs REST com Robot Framework\Curso Robot Framework\VariaveisEscoposArgumentos\DesafioKeywords.robot">
+<test id="s1-t1" name="Validar Geração De Email Com Nome E Sobrenome" line="6">
+<kw name="Gerar Email Personalizado">
+<kw name="Generate Random String" owner="String">
+<msg time="2025-05-20T17:43:39.534708" level="INFO">${PALAVRA_RANDOMICA} = UjdmGyAc</msg>
+<var>${PALAVRA_RANDOMICA}</var>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2025-05-20T17:43:39.534708" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-20T17:43:39.535709" level="INFO">${EMAIL} = PedroAfonsoUjdmGyAc@testerobot.com</msg>
+<var>${EMAIL}</var>
+<arg>${NOME}${SOBRENOME}${PALAVRA_RANDOMICA}@testerobot.com</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-05-20T17:43:39.535709" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${EMAIL}</value>
+<status status="PASS" start="2025-05-20T17:43:39.535709" elapsed="0.000000"/>
+</return>
+<msg time="2025-05-20T17:43:39.535709" level="INFO">${EMAIL} = PedroAfonsoUjdmGyAc@testerobot.com</msg>
+<var>${EMAIL}</var>
+<arg>Pedro</arg>
+<arg>Afonso</arg>
+<status status="PASS" start="2025-05-20T17:43:39.533708" elapsed="0.002001"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${EMAIL}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-20T17:43:39.536708" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-20T17:43:39.532709" elapsed="0.003999"/>
+</test>
+<doc>Teste de geração de e-mail automatizado a partir de nome, sobrenome e string aleatória</doc>
+<status status="PASS" start="2025-05-20T17:43:39.495723" elapsed="0.041985"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="DesafioKeywords" id="s1" pass="1" fail="0" skip="0">DesafioKeywords</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
