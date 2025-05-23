@@ -2,13 +2,6 @@
 
 Este repositório apresenta uma implementação completa de testes automatizados para a API [Restful Booker](https://restful-booker.herokuapp.com/) utilizando o **Robot Framework**.
 
-## 🌐 Tecnologias e Ferramentas
-- Robot Framework
-- RequestsLibrary
-- Python 3.10+
-- Visual Studio Code (com extensão Robot Framework Language Server)
-- API: https://restful-booker.herokuapp.com/
-
 ## 📁 Estrutura do Projeto
 
 ```
