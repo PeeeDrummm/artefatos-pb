@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.10.6 on win32)" generated="2025-05-27T18:27:22.423314" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\Users\Pedro\Documents\Compass UOL\Documentos\Semana 11 - Testes automatizados de APIs REST com Robot Framework - Aprofundando com AI e AWS\TesteRestful-BookerAPIAmazonQ\tests">
+<suite id="s1-s1" name="Auth" source="C:\Users\Pedro\Documents\Compass UOL\Documentos\Semana 11 - Testes automatizados de APIs REST com Robot Framework - Aprofundando com AI e AWS\TesteRestful-BookerAPIAmazonQ\tests\auth.robot">
+<kw name="Create Auth Session" owner="auth" type="SETUP">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-05-27T18:27:22.930525" level="INFO">Creating Session using : alias=auth_session, url=https://restful-booker.herokuapp.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>auth_session</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-05-27T18:27:22.929832" elapsed="0.001001"/>
+</kw>
+<status status="PASS" start="2025-05-27T18:27:22.928832" elapsed="0.002001"/>
+</kw>
+<test id="s1-s1-t1" name="Generate Token And Validate Response Schema" line="12">
+<kw name="Generate Auth Token" owner="auth">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-05-27T18:27:22.932833" level="INFO">${auth_payload} = {'username': 'admin', 'password': 'password123'}</msg>
+<var>${auth_payload}</var>
+<arg>username=${USERNAME}</arg>
+<arg>password=${PASSWORD}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-05-27T18:27:22.931833" elapsed="0.001000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-05-27T18:27:22.935832" level="FAIL">AttributeError: 'str' object has no attribute 'items'</msg>
+<var>${response}</var>
+<arg>auth_session</arg>
+<arg>${AUTH_ENDPOINT}</arg>
+<arg>json=${auth_payload}</arg>
+<arg>headers=${HEADERS}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="FAIL" start="2025-05-27T18:27:22.932833" elapsed="0.004998">AttributeError: 'str' object has no attribute 'items'</status>
+</kw>
+<kw name="Handle API Error" owner="auth">
+<arg>${response}</arg>
+<status status="NOT RUN" start="2025-05-27T18:27:22.937831" elapsed="0.000000"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="NOT RUN" start="2025-05-27T18:27:22.937831" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To JSON">
+<var>${json}</var>
+<arg>${response.text}</arg>
+<status status="NOT RUN" start="2025-05-27T18:27:22.937831" elapsed="0.001006"/>
+</kw>
+<kw name="Validate Auth Response Schema" owner="auth">
+<arg>${json}</arg>
+<status status="NOT RUN" start="2025-05-27T18:27:22.938837" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${json.token}</value>
+<status status="NOT RUN" start="2025-05-27T18:27:22.938837" elapsed="0.000000"/>
+</return>
+<var>${token}</var>
+<doc>Cria um token de autenticação e valida o schema</doc>
+<status status="FAIL" start="2025-05-27T18:27:22.931833" elapsed="0.007004">AttributeError: 'str' object has no attribute 'items'</status>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${token}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2025-05-27T18:27:22.938837" elapsed="0.000000"/>
+</kw>
+<doc>Validates token generation and schema response</doc>
+<status status="FAIL" start="2025-05-27T18:27:22.930833" elapsed="0.008999">AttributeError: 'str' object has no attribute 'items'</status>
+</test>
+<test id="s1-s1-t2" name="Validate Authentication With Invalid Credentials" line="17">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-05-27T18:27:22.940835" level="INFO">${invalid_payload} = {'username': 'wronguser', 'password': 'wrongpass'}</msg>
+<var>${invalid_payload}</var>
+<arg>username=wronguser</arg>
+<arg>password=wrongpass</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-05-27T18:27:22.940835" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-05-27T18:27:22.941834" level="FAIL">AttributeError: 'str' object has no attribute 'items'</msg>
+<var>${response}</var>
+<arg>auth_session</arg>
+<arg>${AUTH_ENDPOINT}</arg>
+<arg>json=${invalid_payload}</arg>
+<arg>headers=${HEADERS}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="FAIL" start="2025-05-27T18:27:22.940835" elapsed="0.001999">AttributeError: 'str' object has no attribute 'items'</status>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>401</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="NOT RUN" start="2025-05-27T18:27:22.942834" elapsed="0.000000"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response.text}</arg>
+<arg>Bad credentials</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2025-05-27T18:27:22.943834" elapsed="0.000000"/>
+</kw>
+<doc>Validates error when using wrong credentials</doc>
+<status status="FAIL" start="2025-05-27T18:27:22.939832" elapsed="0.004002">AttributeError: 'str' object has no attribute 'items'</status>
+</test>
+<doc>Authentication tests for Restful-booker API</doc>
+<status status="FAIL" start="2025-05-27T18:27:22.481316" elapsed="0.463519"/>
+</suite>
+<suite id="s1-s2" name="Booking" source="C:\Users\Pedro\Documents\Compass UOL\Documentos\Semana 11 - Testes automatizados de APIs REST com Robot Framework - Aprofundando com AI e AWS\TesteRestful-BookerAPIAmazonQ\tests\booking.robot">
+<kw name="Run Keywords" owner="BuiltIn" type="SETUP">
+<kw name="Create Auth Session" owner="auth">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-05-27T18:27:23.934334" level="INFO">Creating Session using : alias=auth_session, url=https://restful-booker.herokuapp.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>auth_session</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-05-27T18:27:23.934334" elapsed="0.001017"/>
+</kw>
+<status status="PASS" start="2025-05-27T18:27:23.934334" elapsed="0.001017"/>
+</kw>
+<kw name="Set Suite Variables">
+<kw name="Generate Auth Token" owner="auth">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-05-27T18:27:23.936351" level="INFO">${auth_payload} = {'username': 'admin', 'password': 'password123'}</msg>
+<var>${auth_payload}</var>
+<arg>username=${USERNAME}</arg>
+<arg>password=${PASSWORD}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-05-27T18:27:23.935351" elapsed="0.001000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-05-27T18:27:23.937351" level="FAIL">AttributeError: 'str' object has no attribute 'items'</msg>
+<var>${response}</var>
+<arg>auth_session</arg>
+<arg>${AUTH_ENDPOINT}</arg>
+<arg>json=${auth_payload}</arg>
+<arg>headers=${HEADERS}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="FAIL" start="2025-05-27T18:27:23.936351" elapsed="0.002000">AttributeError: 'str' object has no attribute 'items'</status>
+</kw>
+<kw name="Handle API Error" owner="auth">
+<arg>${response}</arg>
+<status status="NOT RUN" start="2025-05-27T18:27:23.938351" elapsed="0.000000"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="NOT RUN" start="2025-05-27T18:27:23.938351" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To JSON">
+<var>${json}</var>
+<arg>${response.text}</arg>
+<status status="NOT RUN" start="2025-05-27T18:27:23.938351" elapsed="0.000000"/>
+</kw>
+<kw name="Validate Auth Response Schema" owner="auth">
+<arg>${json}</arg>
+<status status="NOT RUN" start="2025-05-27T18:27:23.939350" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${json.token}</value>
+<status status="NOT RUN" start="2025-05-27T18:27:23.939350" elapsed="0.000000"/>
+</return>
+<var>${token}</var>
+<doc>Cria um token de autenticação e valida o schema</doc>
+<status status="FAIL" start="2025-05-27T18:27:23.935351" elapsed="0.003999">AttributeError: 'str' object has no attribute 'items'</status>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<arg>${AUTH_TOKEN}</arg>
+<arg>${token}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" start="2025-05-27T18:27:23.939350" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-05-27T18:27:23.935351" elapsed="0.003999">AttributeError: 'str' object has no attribute 'items'</status>
+</kw>
+<arg>Create Auth Session</arg>
+<arg>AND</arg>
+<arg>Set Suite Variables</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<status status="FAIL" start="2025-05-27T18:27:23.933337" elapsed="0.006013">AttributeError: 'str' object has no attribute 'items'</status>
+</kw>
+<test id="s1-s2-t1" name="Create New Booking" line="34">
+<doc>Creates a new booking and validates the response</doc>
+<status status="FAIL" start="2025-05-27T18:27:23.939350" elapsed="0.001000">Parent suite setup failed:
+AttributeError: 'str' object has no attribute 'items'</status>
+</test>
+<test id="s1-s2-t2" name="Get Existing Booking" line="41">
+<doc>Retrieves and validates an existing booking</doc>
+<status status="FAIL" start="2025-05-27T18:27:23.940350" elapsed="0.001000">Parent suite setup failed:
+AttributeError: 'str' object has no attribute 'items'</status>
+</test>
+<test id="s1-s2-t3" name="Update Existing Booking" line="48">
+<doc>Updates an existing booking and validates changes</doc>
+<status status="FAIL" start="2025-05-27T18:27:23.941350" elapsed="0.000999">Parent suite setup failed:
+AttributeError: 'str' object has no attribute 'items'</status>
+</test>
+<test id="s1-s2-t4" name="Partially Update Booking" line="56">
+<doc>Tests partial update of a booking</doc>
+<status status="FAIL" start="2025-05-27T18:27:23.942349" elapsed="0.000000">Parent suite setup failed:
+AttributeError: 'str' object has no attribute 'items'</status>
+</test>
+<test id="s1-s2-t5" name="Delete Existing Booking" line="64">
+<doc>Deletes a booking and verifies deletion</doc>
+<status status="FAIL" start="2025-05-27T18:27:23.943350" elapsed="0.000986">Parent suite setup failed:
+AttributeError: 'str' object has no attribute 'items'</status>
+</test>
+<test id="s1-s2-t6" name="Validate API Error Handling" line="71">
+<doc>Tests API error handling for invalid requests</doc>
+<status status="FAIL" start="2025-05-27T18:27:23.944336" elapsed="0.001015">Parent suite setup failed:
+AttributeError: 'str' object has no attribute 'items'</status>
+</test>
+<doc>Booking tests for Restful-booker API</doc>
+<status status="FAIL" start="2025-05-27T18:27:22.944835" elapsed="1.000516">Suite setup failed:
+AttributeError: 'str' object has no attribute 'items'</status>
+</suite>
+<suite id="s1-s3" name="Health" source="C:\Users\Pedro\Documents\Compass UOL\Documentos\Semana 11 - Testes automatizados de APIs REST com Robot Framework - Aprofundando com AI e AWS\TesteRestful-BookerAPIAmazonQ\tests\health.robot">
+<kw name="Create Session" owner="RequestsLibrary" type="SETUP">
+<msg time="2025-05-27T18:27:23.956350" level="INFO">Creating Session using : alias=health_session, url=https://restful-booker.herokuapp.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>health_session</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-05-27T18:27:23.956350" elapsed="0.001000"/>
+</kw>
+<test id="s1-s3-t1" name="Check API Health Endpoint" line="10">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-05-27T18:27:24.559517" level="INFO">GET Request : url=https://restful-booker.herokuapp.com/ping 
+ path_url=/ping 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-05-27T18:27:24.559517" level="INFO">GET Response : url=https://restful-booker.herokuapp.com/ping 
+ status=201, reason=Created 
+ headers={'Content-Length': '7', 'Content-Type': 'text/plain; charset=utf-8', 'Date': 'Tue, 27 May 2025 21:27:23 GMT', 'Etag': 'W/"7-rM9AyJuqT6iOan/xHh+AW+7K/T8"', 'Nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'Report-To': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=07mTsapClnN1Lkg4GJBPnmBKo8g0nwP2Ph5I%2BL7398Y%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1748381243"}],"max_age":3600}', 'Reporting-Endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=07mTsapClnN1Lkg4GJBPnmBKo8g0nwP2Ph5I%2BL7398Y%3D&amp;sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&amp;ts=1748381243"', 'Server': 'Heroku', 'Via': '1.1 heroku-router', 'X-Powered-By': 'Express'} 
+ body=Created 
+ </msg>
+<msg time="2025-05-27T18:27:24.559517" level="INFO">C:\Users\Pedro\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restful-booker.herokuapp.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-05-27T18:27:24.559517" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>health_session</arg>
+<arg>${PING_ENDPOINT}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-05-27T18:27:23.957350" elapsed="0.603181"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-05-27T18:27:24.560531" elapsed="0.000000"/>
+</kw>
+<doc>Checks the /ping endpoint for service availability</doc>
+<status status="PASS" start="2025-05-27T18:27:23.957350" elapsed="0.604170"/>
+</test>
+<doc>Health check for the Restful-booker API</doc>
+<status status="PASS" start="2025-05-27T18:27:23.946351" elapsed="0.615169"/>
+</suite>
+<status status="FAIL" start="2025-05-27T18:27:22.426312" elapsed="2.136207"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="8" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="1" fail="8" skip="0">Tests</stat>
+<stat name="Auth" id="s1-s1" pass="0" fail="2" skip="0">Tests.Auth</stat>
+<stat name="Booking" id="s1-s2" pass="0" fail="6" skip="0">Tests.Booking</stat>
+<stat name="Health" id="s1-s3" pass="1" fail="0" skip="0">Tests.Health</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

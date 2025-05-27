@@ -1,0 +1,21 @@
+{
+  "name": "serverest-marketplace",
+  "version": "1.0.0",
+  "description": "ServeRest Marketplace vendor registration service",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-rate-limit": "^6.7.0",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6",
+    "supertest": "^6.1.3"
+  }
+}
