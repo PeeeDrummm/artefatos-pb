@@ -26,6 +26,7 @@ O versionamento é feito por branches, garantindo um histórico limpo e rastreá
 - **Semana 08**: Challenge 01  
 - **Semana 09**: Base versionamento e programação Python
 - **Semana 10**: Base Testes Automatizados + Testes automatizados de APIs REST com Robot Framework
+- **_[🚧 Em progresso]_** **Semana 11**: Testes automatizados de APIs REST com Robot Framework - Aprofundando com AI e AWS
 
 ---
 
@@ -45,6 +46,7 @@ Cada evolução, estudo ou entrega é feita em uma branch separada e depois inte
 ![VSCode](https://img.shields.io/badge/-VSCode-007ACC?style=flat&logo=visual-studio-code&logoColor=white)
 ![PyCharm](https://img.shields.io/badge/-PyCharm-000000?style=flat&logo=pycharm&logoColor=white)
 ![Robot Framework](https://img.shields.io/badge/-Robot_Framework-000000?style=flat&logo=robot-framework&logoColor=white)
+![Amazon Q Developer](https://img.shields.io/badge/Amazon%20Q%20Developer-232F3E?style=flat&logo=amazon&logoColor=white)
 
 ---
 

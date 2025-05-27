@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.10.6 on win32)" generated="2025-05-27T15:44:45.547809" rpa="false" schemaversion="5">
+<suite id="s1" name="Consumir Library Python" source="C:\Users\Pedro\Documents\Compass UOL\Documentos\Semana 11 - Testes automatizados de APIs REST com Robot Framework - Aprofundando com AI e AWS\TestesServeRest\consumir_library_python.robot">
+<test id="s1-t1" name="Teste Library 1" line="6">
+<kw name="Get Endpoint Usuario Tantas Vezes" owner="library_teste">
+<msg time="2025-05-27T15:44:45.802873" level="INFO">${json} = [{'quantidade': 8, 'usuarios': [{'nome': 'Fulano da Silva', 'email': 'fulano@qa.com', 'password': 'teste', 'administrador': 'true', '_id': '0uxuPY0cbmQhpEz1'}, {'nome': 'Victor Schneider', 'email': 'l...</msg>
+<var>${json}</var>
+<arg>${5}</arg>
+<status status="PASS" start="2025-05-27T15:44:45.744476" elapsed="0.058397"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${json}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-27T15:44:45.802873" elapsed="0.003000"/>
+</kw>
+<status status="PASS" start="2025-05-27T15:44:45.742474" elapsed="0.064402"/>
+</test>
+<test id="s1-t2" name="Teste Library 2" line="10">
+<kw name="Pegar Quantidade De Usuarios Cadastrados" owner="library_teste">
+<msg time="2025-05-27T15:44:45.813872" level="INFO">${users} = 8</msg>
+<var>${users}</var>
+<status status="PASS" start="2025-05-27T15:44:45.807872" elapsed="0.006000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${users}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-27T15:44:45.814877" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-05-27T15:44:45.806876" elapsed="0.008001"/>
+</test>
+<doc>Arquivo de Testes para Library Python</doc>
+<status status="PASS" start="2025-05-27T15:44:45.549805" elapsed="0.266065"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Consumir Library Python" id="s1" pass="2" fail="0" skip="0">Consumir Library Python</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
