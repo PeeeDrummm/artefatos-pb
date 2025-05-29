@@ -1,14 +1,23 @@
 # 📚 Índice
 
-- [📌 Pré-requisitos](#-pré-requisitos)
+## ☁️ [Guia de Configuração EC2 + ServeRest (AWS)](#%EF%B8%8F-guia-de-configura%C3%A7%C3%A3o-ec2--serverest-aws)
+
+- [📌 Pré-requisitos](#-pr%C3%A9-requisitos)
 - [🔐 Etapa 1: Criar Par de Chaves](#-etapa-1-criar-par-de-chaves)
 - [🌐 Etapa 2: Configurar VPC e Internet Gateway](#-etapa-2-configurar-vpc-e-internet-gateway)
-- [⚙️ Etapa 3: Criar Instância EC2](#-etapa-3-criar-instância-ec2)
-- [🔗 Etapa 4: Conectar-se à Instância](#-etapa-4-conectar-se-à-instância)
+- [⚙️ Etapa 3: Criar Instância EC2](#%EF%B8%8F-etapa-3-criar-inst%C3%A2ncia-ec2)
+- [🔗 Etapa 4: Conectar-se à Instância](#-etapa-4-conectar-se-%C3%A0-inst%C3%A2ncia)
 - [🚀 Etapa 5: Subir a API ServeRest](#-etapa-5-subir-a-api-serverest)
-- [🔁 Etapa 6: Reinicialização e Rotina de Testes](#-etapa-6-reinicialização-e-rotina-de-testes)
-- [⛔ Encerrando a Instância Após os Testes](#-encerrando-a-instância-após-os-testes)
-- [📋 Relatório de Desafios Superados](#-relatório-de-desafios-superados)
+- [🔁 Etapa 6: Reinicialização e Rotina de Testes](#-etapa-6-reinicializa%C3%A7%C3%A3o-e-rotina-de-testes)
+- [⛔ Encerrando a Instância Após os Testes](#-encerrando-a-inst%C3%A2ncia-ap%C3%B3s-os-testes)
+
+## 📋 [Relatório de Desafios Superados na Configuração EC2 + ServeRest](#-relatório-de-desafios-superados-na-configuração-ec2--serverest)
+
+- [👩‍💻 Alicia](#-alicia)
+- [👩‍💻 Brenda](#-brenda)
+- [👩‍💻 Maria Eduarda](#-maria-eduarda)
+- [👨‍💻 Pedro](#-pedro)
+- [👩‍💻 Thais](#-thais)
 
 ---
 
