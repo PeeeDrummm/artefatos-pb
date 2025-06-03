@@ -4,7 +4,9 @@ Resource         ../resources/produtos_keywords.resource
 Resource         ../resources/carrinhos_keywords.resource
 Resource         ../resources/login_keywords.resource
 Resource         ../resources/usuarios_keywords.resource
+Resource         ../variables/env_variables.robot
 Suite Setup      Criar Sessão
+Test Teardown    Sleep    ${global_delay}
 
 *** Test Cases ***
 Cenário: POST Criar Produto com Token de Admin - 201
@@ -46,6 +48,6 @@ Cenário: DELETE Produto Vinculado a Carrinho - 400
     Criar Usuário Dinâmico
     Realizar Login Com Usuário Dinâmico
     Criar Produto Para Carrinho
-    Criar Carrinho Com Produto
+    Criar Carrinho Com Produto    ${id_produto}
     DELETE Produto Vinculado Ao Carrinho
     Validar Status Code    400

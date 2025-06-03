@@ -1,10 +1,23 @@
-*** Variables ***
-@{emails_invalidos}
+*** Variables ***    #Todos os e-mails Violam o padrão RFC de formato de e-mail
+@{emails_invalidos} 
 ...    abc
 ...    abc@
-...    abc.com
 ...    @teste.com
 ...    abc@.com
 ...    abc@com
 ...    abc@@teste.com
 ...    abc@teste..com
+...    .abc@teste.com
+...    abc.@teste.com
+...    abc..def@teste.com
+...    abc@-teste.com
+...    abc@teste.com-
+...    abc@.teste.com
+...    abc@teste.com.
+...    abc@te..ste.com
+...    abc@teste@com
+...    abc@ teste.com
+...    abc test@teste.com
+...    abc@teste .com
+...    abc@tes*te.com
+...    abc@%teste.com
