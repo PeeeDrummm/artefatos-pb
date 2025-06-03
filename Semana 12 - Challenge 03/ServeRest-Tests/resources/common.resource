@@ -5,7 +5,7 @@ Library          Collections
 
 *** Keywords ***
 Criar Sessão
-    Create Session    ServeRest    https://serverest.dev/
+    Create Session    ServeRest    http://34.224.93.126:3000/
     Log    Sessão criada com sucesso.
 
 Validar Status Code
