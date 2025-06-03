@@ -82,9 +82,9 @@ POST Criar Produto com Mesmo Nome
     Log To Console    Requisição duplicada: ${response.content}
     Set Global Variable    ${response}
 
-Gerar ID Inexistente
-    ${id_inexistente}=    Generate Random String    16    [LETTERS]
-    Set Suite Variable    ${id_inexistente}
+# Gerar ID Inexistente
+#     ${id_inexistente}=    Generate Random String    16    [LETTERS]
+#     Set Suite Variable    ${id_inexistente}
 
 PUT Criar Produto Com ID Inexistente
     ${nome_produto}=         FakerLibrary.Word
@@ -150,8 +150,10 @@ Tentar Renomear Produto B Com Nome de Produto A
     Set Global Variable    ${response}
 
 Criar Produto Para Carrinho
-    ${nome_produto}=    FakerLibrary.Word
-    ${preco}=           Set Variable    199
+    ${palavra}=         FakerLibrary.Word
+    ${sufixo}=          Generate Random String    5    [NUMBERS]
+    ${nome_produto}=    Set Variable    ${palavra}-${sufixo}
+    ${preco}=           Set Variable    777
     ${descricao}=       Set Variable    Produto do Carrinho
     ${quantidade}=      Set Variable    5
     &{headers}=         Create Dictionary    Authorization=${auth_token}

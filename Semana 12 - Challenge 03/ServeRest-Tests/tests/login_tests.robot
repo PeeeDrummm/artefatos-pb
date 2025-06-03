@@ -2,7 +2,9 @@
 Documentation    Arquivo de Testes para o Endpoint /login
 Resource         ../resources/login_keywords.resource
 Resource         ../resources/produtos_keywords.resource
+Resource         ../variables/env_variables.robot
 Suite Setup      Criar Sessão
+Test Teardown    Sleep    ${global_delay}
 
 *** Test Cases ***
 Cenário: POST Realizar Login com Dados Válidos - 200

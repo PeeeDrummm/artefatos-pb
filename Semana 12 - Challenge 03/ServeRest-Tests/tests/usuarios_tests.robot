@@ -1,7 +1,9 @@
 *** Settings ***
 Documentation    Arquivo de Testes para o Endpoint /usuarios
 Resource         ../resources/usuarios_keywords.resource
+Resource         ../variables/env_variables.robot
 Suite Setup      Criar Sessão
+Test Teardown    Sleep    ${global_delay}
 
 *** Test Cases ***
 Cenário: POST Criar Usuário com Dados Válidos - 201
