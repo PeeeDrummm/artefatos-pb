@@ -4,7 +4,7 @@ Resource         ../resources/login_keywords.resource
 Resource         ../resources/produtos_keywords.resource
 Resource         ../variables/env_variables.robot
 Suite Setup      Criar Sessão
-Test Teardown    Sleep    ${global_delay}
+Test Teardown    Aguardar Delay Global
 
 *** Test Cases ***
 Cenário: POST Realizar Login com Dados Válidos - 200
@@ -12,7 +12,6 @@ Cenário: POST Realizar Login com Dados Válidos - 200
     POST Endpoint /login
     Validar Status Code    200
     Validar Ter Logado
-    Armazenar Token de Autenticação
 
 Cenário: POST Login com Senha Incorreta - 401
     [Tags]    POSTLOGIN    CT010

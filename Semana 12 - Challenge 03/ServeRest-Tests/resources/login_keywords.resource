@@ -2,33 +2,27 @@
 Documentation    Keywords e Variáveis para Ações do Endpoint /login
 Library          FakerLibrary
 Resource         ../resources/common.resource
-
-*** Variables ***
-${email_para_login}        fulano@qa.com
-${password_para_login}     teste
-${auth_token}              None
+Resource         ../variables/env_variables.robot
 
 *** Keywords ***
 POST Endpoint /login
+    [Arguments]    ${email}=${EMAIL_ADMIN}    ${senha}=${SENHA_ADMIN}
     &{payload}=    Create Dictionary
-    ...            email=${email_para_login}
-    ...            password=${password_para_login}
+    ...            email=${email}
+    ...            password=${senha}
     ${response}=   POST On Session    ServeRest    /login    json=${payload}    expected_status=ANY
     Log To Console    Response: ${response.content}
     Set Global Variable    ${response}
+    ${token}=    Set Variable    ${response.json()["authorization"]}
+    Armazenar Token    ${token}
 
 Validar Ter Logado
     Should Be Equal       ${response.json()["message"]}      Login realizado com sucesso
     Should Not Be Empty   ${response.json()["authorization"]}
 
-Armazenar Token de Autenticação
-    ${token}=    Set Variable    ${response.json()["authorization"]}
-    Set Suite Variable    ${auth_token}    ${token}
-    Log    Token armazenado: ${auth_token}
-
 POST Endpoint /login com Senha Incorreta
     &{payload}=    Create Dictionary
-    ...            email=${email_para_login}
+    ...            email=${EMAIL_ADMIN}
     ...            password=senhaErrada123
     ${response}=   POST On Session    ServeRest    /login    json=${payload}    expected_status=ANY
     Log To Console    Response: ${response.content}
@@ -49,8 +43,11 @@ POST Endpoint /login com Usuario Inexistente
     Set Global Variable    ${response}
 
 Realizar Login Com Usuário Dinâmico
+    [Arguments]    ${email}    ${senha}
     &{payload}=  Create Dictionary
     ...         email=${email}
     ...         password=${senha}
     ${response}=  POST On Session    ServeRest    /login    data=${payload}
-    Set Global Variable    ${auth_token}    ${response.json()["authorization"]}
+    Set Global Variable    ${response}
+    ${token}=    Set Variable    ${response.json()["authorization"]}
+    Armazenar Token    ${token}

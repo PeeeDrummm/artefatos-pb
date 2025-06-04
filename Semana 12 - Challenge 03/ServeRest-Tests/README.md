@@ -70,6 +70,16 @@ robot -d reports -i CT012 tests/
 robot -d reports -i CT024 tests/
 ```
 
+## 🔧 Variáveis de Ambiente
+
+É possível sobrescrever a URL base e as credenciais de administrador utilizando as variáveis `BASE_URL`, `EMAIL_ADMIN` e `SENHA_ADMIN`.
+
+```bash
+export BASE_URL=http://meu-servidor:3000/
+export EMAIL_ADMIN=admin@example.com
+export SENHA_ADMIN=segredo
+```
+
 ---
 
 ## 🐞 Bugs Conhecidos (Erro esperado)
@@ -87,10 +97,7 @@ Esses testes irão **falhar propositalmente** por inconsistência conhecida ou a
 
 ## ⏱️ Delay Global
 
-Todos os testes possuem `Test Teardown` com `Sleep` de **2 segundos**, definido no arquivo:
-```
-variables/env_variables.robot
-```
+Todos os testes possuem `Test Teardown` que chama a keyword `Aguardar Delay Global`, definida em `resources/common.resource`. O tempo de espera é configurado no arquivo `variables/env_variables.robot`.
 
 Isso ajuda a evitar sobrecarga local da API e minimizar falhas por concorrência.
 

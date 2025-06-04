@@ -6,7 +6,7 @@ Resource         ../resources/login_keywords.resource
 Resource         ../resources/usuarios_keywords.resource
 Resource         ../variables/env_variables.robot
 Suite Setup      Criar Sessão
-Test Teardown    Sleep    ${global_delay}
+Test Teardown    Aguardar Delay Global
 
 *** Test Cases ***
 Cenário: POST Criar Produto com Token de Admin - 201

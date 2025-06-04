@@ -1,16 +1,15 @@
 *** Settings ***
 Documentation    Keywords e Variáveis para Ações do Endpoint /produtos
 Resource         ../resources/common.resource
+Resource         ../resources/login_keywords.resource
 Library          FakerLibrary
 Library          String
 
 *** Keywords ***
 Realizar Login Como Admin
-    &{payload}=    Create Dictionary
-    ...           email=fulano@qa.com
-    ...           password=teste
-    ${response}=  POST On Session    ServeRest    /login    data=${payload}
-    Set Global Variable    ${auth_token}    ${response.json()["authorization"]}
+    POST Endpoint /login
+    Validar Status Code    200
+    Validar Ter Logado
 
 Esperar Expiração do Token
     Sleep    660s
@@ -54,7 +53,7 @@ Gerar Dados de Produto
 
 POST Criar Produto com Nome Gerado
     ${preco_produto}=        Set Variable    777
-    ${descricao_produto}=    Set Variable    Produto para duplicação
+    ${descricao_produto}=    Set Variable    Produto para duplicacao
     ${quantidade_produto}=   Set Variable    10
 
     &{headers}=    Create Dictionary    Authorization=${auth_token}
@@ -81,10 +80,6 @@ POST Criar Produto com Mesmo Nome
     ${response}=  POST On Session    ServeRest    /produtos    headers=${headers}    data=${payload}    expected_status=ANY
     Log To Console    Requisição duplicada: ${response.content}
     Set Global Variable    ${response}
-
-# Gerar ID Inexistente
-#     ${id_inexistente}=    Generate Random String    16    [LETTERS]
-#     Set Suite Variable    ${id_inexistente}
 
 PUT Criar Produto Com ID Inexistente
     ${nome_produto}=         FakerLibrary.Word
@@ -141,7 +136,7 @@ Tentar Renomear Produto B Com Nome de Produto A
     ${quantidade}=         Set Variable    10
     &{headers}=            Create Dictionary    Authorization=${auth_token}
     &{payload}=            Create Dictionary
-    ...                   nome=${nome_produto_a}         # usando nome do produto A
+    ...                   nome=${nome_produto_a}
     ...                   preco=${preco}
     ...                   descricao=${descricao}
     ...                   quantidade=${quantidade}
