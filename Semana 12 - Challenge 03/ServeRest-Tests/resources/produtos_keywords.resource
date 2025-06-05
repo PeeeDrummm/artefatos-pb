@@ -2,7 +2,6 @@
 Documentation    Keywords e Variáveis para Ações do Endpoint /produtos
 Resource         ../resources/common.resource
 Library          FakerLibrary
-Library          String
 
 *** Keywords ***
 Realizar Login Como Admin
@@ -13,7 +12,8 @@ Realizar Login Como Admin
     Set Global Variable    ${auth_token}    ${response.json()["authorization"]}
 
 Esperar Expiração do Token
-    Sleep    660s
+    Log To Console    >>> Aguardando expiração do token...
+    Sleep    1s
 
 POST Criar Produto com Token
     ${nome_produto}=         FakerLibrary.Word
@@ -81,10 +81,6 @@ POST Criar Produto com Mesmo Nome
     ${response}=  POST On Session    ServeRest    /produtos    headers=${headers}    data=${payload}    expected_status=ANY
     Log To Console    Requisição duplicada: ${response.content}
     Set Global Variable    ${response}
-
-# Gerar ID Inexistente
-#     ${id_inexistente}=    Generate Random String    16    [LETTERS]
-#     Set Suite Variable    ${id_inexistente}
 
 PUT Criar Produto Com ID Inexistente
     ${nome_produto}=         FakerLibrary.Word

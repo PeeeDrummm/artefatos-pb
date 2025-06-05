@@ -1,8 +1,7 @@
 *** Settings ***
 Documentation    Arquivo de Testes para o Endpoint /usuarios
 Resource         ../resources/usuarios_keywords.resource
-Resource         ../variables/env_variables.robot
-Suite Setup      Criar Sessão
+Suite Setup      Setup Geral da Suite
 Test Teardown    Sleep    ${global_delay}
 
 *** Test Cases ***
