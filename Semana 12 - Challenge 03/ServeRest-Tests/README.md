@@ -26,9 +26,17 @@ ServeRest-Tests/
 │
 ├── data/
 │   ├── static/
+│   │   ├── emails_invalidos.robot
+│   │   ├── emails_proibidos.robot
+│   │   └── senhas_invalidas.robot
 │   └── dynamic/
+│       └── usuario_valido.robot
 │
 ├── reports/
+│   ├── log.html
+│   ├── output.xml
+│   └── report.html
+│
 └── README.md
 ```
 
@@ -74,25 +82,26 @@ robot -d reports -i CT024 tests/
 
 ## 🐞 Bugs Conhecidos (Erro esperado)
 
-Esses testes irão **falhar propositalmente** por inconsistência conhecida ou ausência de validação na API ServeRest.
+Esses testes irão **falhar propositalmente** por inconsistência conhecida na API ServeRest.
 
 | Caso   | Descrição                                        |
 |--------|--------------------------------------------------|
 | CT004  | Cadastro com domínio de e-mail proibido          |
 | CT005  | Cadastro com senha de 4 caracteres               |
 | CT006  | Cadastro com senha de 11 caracteres              |
-| CT012  | Token expira somente após 10 minutos (aguardar)  |
+
+> ⚠️ **Importante**: o caso **CT012** exige aguardar **10 minutos** para que o token expire. Por isso, o teste **ficará parado no terminal durante esse tempo** antes de seguir com a validação. Isso é esperado e faz parte da lógica do cenário.
 
 ---
 
 ## ⏱️ Delay Global
 
-Todos os testes possuem `Test Teardown` com `Sleep` de **2 segundos**, definido no arquivo:
+Todos os testes possuem `Test Teardown` com `Sleep` de **0 segundos**, variável `${global_delay}` definido no arquivo:
 ```
 variables/env_variables.robot
 ```
 
-Isso ajuda a evitar sobrecarga local da API e minimizar falhas por concorrência.
+O valor padrão é `0s`, mas recomenda-se ajustar para `2s` ao executar localmente a API, para evitar sobrecarga e falhas por concorrência.
 
 ---
 

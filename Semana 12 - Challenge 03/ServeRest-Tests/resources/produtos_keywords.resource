@@ -5,15 +5,15 @@ Library          FakerLibrary
 
 *** Keywords ***
 Realizar Login Como Admin
-    &{payload}=    Create Dictionary
-    ...           email=fulano@qa.com
-    ...           password=teste
-    ${response}=  POST On Session    ServeRest    /login    data=${payload}
+    &{payload}=            Create Dictionary
+    ...                    email=fulano@qa.com
+    ...                    password=teste
+    ${response}=           POST On Session    ServeRest    /login    data=${payload}
     Set Global Variable    ${auth_token}    ${response.json()["authorization"]}
 
 Esperar Expiração do Token
     Log To Console    >>> Aguardando expiração do token...
-    Sleep    1s
+    Sleep             660s
 
 POST Criar Produto com Token
     ${nome_produto}=         FakerLibrary.Word
@@ -21,16 +21,16 @@ POST Criar Produto com Token
     ${descricao_produto}=    Set Variable    Produto de teste
     ${quantidade_produto}=   Set Variable    5
 
-    &{headers}=    Create Dictionary    Authorization=${auth_token}
-    &{payload}=    Create Dictionary
-    ...           nome=${nome_produto}
-    ...           preco=${preco_produto}
-    ...           descricao=${descricao_produto}
-    ...           quantidade=${quantidade_produto}
+    &{headers}=              Create Dictionary    Authorization=${auth_token}
+    &{payload}=              Create Dictionary
+    ...                      nome=${nome_produto}
+    ...                      preco=${preco_produto}
+    ...                      descricao=${descricao_produto}
+    ...                      quantidade=${quantidade_produto}
 
-    ${response}=  POST On Session    ServeRest    /produtos    headers=${headers}    data=${payload}    expected_status=ANY
-    Log To Console    Response: ${response.content}
-    Set Global Variable    ${response}
+    ${response}=             POST On Session    ServeRest    /produtos    headers=${headers}    data=${payload}    expected_status=ANY
+    Log To Console           Response: ${response.content}
+    Set Global Variable      ${response}
 
 POST Criar Produto Sem Token
     ${nome_produto}=         FakerLibrary.Word
@@ -38,15 +38,15 @@ POST Criar Produto Sem Token
     ${descricao_produto}=    Set Variable    Produto sem token
     ${quantidade_produto}=   Set Variable    5
 
-    &{payload}=    Create Dictionary
-    ...           nome=${nome_produto}
-    ...           preco=${preco_produto}
-    ...           descricao=${descricao_produto}
-    ...           quantidade=${quantidade_produto}
+    &{payload}=              Create Dictionary
+    ...                      nome=${nome_produto}
+    ...                      preco=${preco_produto}
+    ...                      descricao=${descricao_produto}
+    ...                      quantidade=${quantidade_produto}
 
-    ${response}=  POST On Session    ServeRest    /produtos    data=${payload}    expected_status=ANY
-    Log To Console    Response: ${response.content}
-    Set Global Variable    ${response}
+    ${response}=             POST On Session    ServeRest    /produtos    data=${payload}    expected_status=ANY
+    Log To Console           Response: ${response.content}
+    Set Global Variable      ${response}
 
 Gerar Dados de Produto
     ${nome_produto}=         FakerLibrary.Word
@@ -57,14 +57,14 @@ POST Criar Produto com Nome Gerado
     ${descricao_produto}=    Set Variable    Produto para duplicação
     ${quantidade_produto}=   Set Variable    10
 
-    &{headers}=    Create Dictionary    Authorization=${auth_token}
-    &{payload}=    Create Dictionary
-    ...           nome=${nome_produto}
-    ...           preco=${preco_produto}
-    ...           descricao=${descricao_produto}
-    ...           quantidade=${quantidade_produto}
-    ${response}=  POST On Session    ServeRest    /produtos    headers=${headers}    data=${payload}    expected_status=ANY
-    Log To Console    Produto criado: ${response.content}
+    &{headers}=           Create Dictionary    Authorization=${auth_token}
+    &{payload}=           Create Dictionary
+    ...                   nome=${nome_produto}
+    ...                   preco=${preco_produto}
+    ...                   descricao=${descricao_produto}
+    ...                   quantidade=${quantidade_produto}
+    ${response}=          POST On Session    ServeRest    /produtos    headers=${headers}    data=${payload}    expected_status=ANY
+    Log To Console        Produto criado: ${response.content}
     Set Suite Variable    ${response}
 
 POST Criar Produto com Mesmo Nome
@@ -72,14 +72,14 @@ POST Criar Produto com Mesmo Nome
     ${descricao_produto}=    Set Variable    Tentativa duplicada
     ${quantidade_produto}=   Set Variable    3
 
-    &{headers}=    Create Dictionary    Authorization=${auth_token}
-    &{payload}=    Create Dictionary
-    ...           nome=${nome_produto}
-    ...           preco=${preco_produto}
-    ...           descricao=${descricao_produto}
-    ...           quantidade=${quantidade_produto}
-    ${response}=  POST On Session    ServeRest    /produtos    headers=${headers}    data=${payload}    expected_status=ANY
-    Log To Console    Requisição duplicada: ${response.content}
+    &{headers}=            Create Dictionary    Authorization=${auth_token}
+    &{payload}=            Create Dictionary
+    ...                    nome=${nome_produto}
+    ...                    preco=${preco_produto}
+    ...                    descricao=${descricao_produto}
+    ...                    quantidade=${quantidade_produto}
+    ${response}=           POST On Session    ServeRest    /produtos    headers=${headers}    data=${payload}    expected_status=ANY
+    Log To Console         Requisição duplicada: ${response.content}
     Set Global Variable    ${response}
 
 PUT Criar Produto Com ID Inexistente
@@ -88,16 +88,16 @@ PUT Criar Produto Com ID Inexistente
     ${descricao_produto}=    Set Variable    Criado via PUT com ID desconhecido
     ${quantidade_produto}=   Set Variable    12
 
-    &{headers}=    Create Dictionary    Authorization=${auth_token}
-    &{payload}=    Create Dictionary
-    ...           nome=${nome_produto}
-    ...           preco=${preco_produto}
-    ...           descricao=${descricao_produto}
-    ...           quantidade=${quantidade_produto}
+    &{headers}=              Create Dictionary    Authorization=${auth_token}
+    &{payload}=              Create Dictionary
+    ...                      nome=${nome_produto}
+    ...                      preco=${preco_produto}
+    ...                      descricao=${descricao_produto}
+    ...                      quantidade=${quantidade_produto}
 
-    ${response}=  PUT On Session    ServeRest    /produtos/${id_inexistente}    headers=${headers}    data=${payload}    expected_status=ANY
-    Log To Console    PUT com ID inexistente: ${response.content}
-    Set Global Variable    ${response}
+    ${response}=             PUT On Session    ServeRest    /produtos/${id_inexistente}    headers=${headers}    data=${payload}    expected_status=ANY
+    Log To Console           PUT com ID inexistente: ${response.content}
+    Set Global Variable      ${response}
 
 Criar Produto A
     ${palavra}=           FakerLibrary.Word
@@ -147,31 +147,31 @@ Tentar Renomear Produto B Com Nome de Produto A
     ${quantidade}=         Set Variable    10
     &{headers}=            Create Dictionary    Authorization=${auth_token}
     &{payload}=            Create Dictionary
-    ...                   nome=${nome_produto_a}         # usando nome do produto A
-    ...                   preco=${preco}
-    ...                   descricao=${descricao}
-    ...                   quantidade=${quantidade}
+    ...                    nome=${nome_produto_a}         # usando nome do produto A
+    ...                    preco=${preco}
+    ...                    descricao=${descricao}
+    ...                    quantidade=${quantidade}
     ${response}=           PUT On Session    ServeRest    /produtos/${id_produto_b}    headers=${headers}    data=${payload}    expected_status=ANY
     Log To Console         Conflito de nome: ${response.content}
     Set Global Variable    ${response}
 
 *** Keywords ***
 Criar Produto Para Carrinho
-    ${palavra}=           FakerLibrary.Word
-    ${numero}=            FakerLibrary.Random Int    1000    9999
-    ${nome_produto}=      Set Variable    ${palavra}_${numero}
-    ${preco}=             Set Variable    199
-    ${descricao}=         Set Variable    Produto do Carrinho
-    ${quantidade}=        Set Variable    5
-    &{headers}=           Create Dictionary    Authorization=${auth_token}
-    &{payload}=           Create Dictionary
-    ...                   nome=${nome_produto}
-    ...                   preco=${preco}
-    ...                   descricao=${descricao}
-    ...                   quantidade=${quantidade}
+    ${palavra}=                    FakerLibrary.Word
+    ${numero}=                     FakerLibrary.Random Int    1000    9999
+    ${nome_produto}=               Set Variable    ${palavra}_${numero}
+    ${preco}=                      Set Variable    199
+    ${descricao}=                  Set Variable    Produto do Carrinho
+    ${quantidade}=                 Set Variable    5
+    &{headers}=                    Create Dictionary    Authorization=${auth_token}
+    &{payload}=                    Create Dictionary
+    ...                            nome=${nome_produto}
+    ...                            preco=${preco}
+    ...                            descricao=${descricao}
+    ...                            quantidade=${quantidade}
     
-    ${response}=          POST On Session    ServeRest    /produtos    headers=${headers}    data=${payload}    expected_status=ANY
-    Log To Console        Produto criado: ${response.content}
+    ${response}=                   POST On Session    ServeRest    /produtos    headers=${headers}    data=${payload}    expected_status=ANY
+    Log To Console                 Produto criado: ${response.content}
     Should Be Equal As Integers    ${response.status_code}    201
 
     ${id_produto}=        Set Variable    ${response.json()["_id"]}

@@ -8,10 +8,10 @@ Library          String
 *** Keywords ***
 Criar Sessão
     Create Session    ServeRest    ${base_url}
-    Log    Sessão criada com sucesso: ${base_url}
+    Log               Sessão criada com sucesso: ${base_url}
 
 Validar Status Code
-    [Arguments]    ${status_esperado}
+    [Arguments]                    ${status_esperado}
     Should Be Equal As Integers    ${response.status_code}    ${status_esperado}
 
 Gerar ID Inexistente
@@ -24,3 +24,15 @@ Desativar Avisos SSL
 Setup Geral da Suite
     Desativar Avisos SSL
     Criar Sessão
+
+Sanitizar Senha
+    [Arguments]                 ${senha_original}
+    ${s}=     Set Variable      ${senha_original}
+    ${s}=     Replace String    ${s}    \${    _
+    ${s}=     Replace String    ${s}    }      _
+    ${s}=     Replace String    ${s}    &      _
+    ${s}=     Replace String    ${s}    =      _
+    ${s}=     Replace String    ${s}    *      _
+    ${s}=     Replace String    ${s}    "      _
+    ${s}=     Replace String    ${s}    '      _
+    RETURN    ${s}

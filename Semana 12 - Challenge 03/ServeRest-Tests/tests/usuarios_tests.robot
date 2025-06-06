@@ -17,7 +17,7 @@ Cenário: POST Criar Usuário com E-mail Já Existente - 400
     Carregar Dados de Usuário Válido
     POST Endpoint /usuarios
     Validar Status Code    201
-    POST Endpoint /usuarios    # Mesmo payload
+    POST Endpoint /usuarios
     Validar Status Code    400
     Validar Mensagem de Erro    Este email já está sendo usado
 
@@ -27,6 +27,7 @@ Cenário: POST Criar Usuário com E-mails Inválidos - 400
     FOR    ${email}    IN    @{emails_invalidos}
         Criar Usuário Com Email Inválido    ${email}
     END
+
 ############### BUG JÁ CONHECIDO ###############
 Cenário: POST Criar Usuário com Domínio Proibido - 400
     [Tags]    POSTUSUARIO    CT004
@@ -34,10 +35,12 @@ Cenário: POST Criar Usuário com Domínio Proibido - 400
     FOR    ${dominio}    IN    gmail.com    hotmail.com
         Criar Usuário Com Email Inválido    ${dominio}
     END
+
 ############### BUG JÁ CONHECIDO ###############
 Cenário: POST Criar Usuário com Senha de 4 Caracteres - 400
     [Tags]    POSTUSUARIO    CT005
     Criar Usuário Com Senha Inválida    "quatro"
+
 ############### BUG JÁ CONHECIDO ###############
 Cenário: POST Criar Usuário com Senha de 11 Caracteres - 400
     [Tags]    POSTUSUARIO    CT006
