@@ -100,36 +100,46 @@ PUT Criar Produto Com ID Inexistente
     Set Global Variable    ${response}
 
 Criar Produto A
-    ${nome_produto_a}=     FakerLibrary.Word
-    Set Suite Variable     ${nome_produto_a}
-    ${preco}=              Set Variable    100
-    ${descricao}=          Set Variable    Produto A
-    ${quantidade}=         Set Variable    5
-    &{headers}=            Create Dictionary    Authorization=${auth_token}
-    &{payload}=            Create Dictionary
+    ${palavra}=           FakerLibrary.Word
+    ${numero}=            FakerLibrary.Random Int    1000    9999
+    ${nome_produto_a}=    Set Variable    ${palavra}_${numero}
+    Set Suite Variable    ${nome_produto_a}
+
+    ${preco}=             Set Variable    100
+    ${descricao}=         Set Variable    Produto A
+    ${quantidade}=        Set Variable    5
+
+    &{headers}=           Create Dictionary    Authorization=${auth_token}
+    &{payload}=           Create Dictionary
     ...                   nome=${nome_produto_a}
     ...                   preco=${preco}
     ...                   descricao=${descricao}
     ...                   quantidade=${quantidade}
-    ${response}=           POST On Session    ServeRest    /produtos    headers=${headers}    data=${payload}
-    ${id_produto_a}=       Set Variable    ${response.json()["_id"]}
-    Set Suite Variable     ${id_produto_a}
+
+    ${response}=          POST On Session    ServeRest    /produtos    headers=${headers}    data=${payload}
+    ${id_produto_a}=      Set Variable    ${response.json()["_id"]}
+    Set Suite Variable    ${id_produto_a}
 
 Criar Produto B
-    ${nome_produto_b}=     FakerLibrary.Word
-    Set Suite Variable     ${nome_produto_b}
-    ${preco}=              Set Variable    150
-    ${descricao}=          Set Variable    Produto B
-    ${quantidade}=         Set Variable    8
-    &{headers}=            Create Dictionary    Authorization=${auth_token}
-    &{payload}=            Create Dictionary
+    ${palavra}=           FakerLibrary.Word
+    ${numero}=            FakerLibrary.Random Int    1000    9999
+    ${nome_produto_b}=    Set Variable    ${palavra}_${numero}
+    Set Suite Variable    ${nome_produto_b}
+
+    ${preco}=             Set Variable    150
+    ${descricao}=         Set Variable    Produto B
+    ${quantidade}=        Set Variable    8
+
+    &{headers}=           Create Dictionary    Authorization=${auth_token}
+    &{payload}=           Create Dictionary
     ...                   nome=${nome_produto_b}
     ...                   preco=${preco}
     ...                   descricao=${descricao}
     ...                   quantidade=${quantidade}
-    ${response}=           POST On Session    ServeRest    /produtos    headers=${headers}    data=${payload}
-    ${id_produto_b}=       Set Variable    ${response.json()["_id"]}
-    Set Suite Variable     ${id_produto_b}
+
+    ${response}=          POST On Session    ServeRest    /produtos    headers=${headers}    data=${payload}
+    ${id_produto_b}=      Set Variable    ${response.json()["_id"]}
+    Set Suite Variable    ${id_produto_b}
 
 Tentar Renomear Produto B Com Nome de Produto A
     ${preco}=              Set Variable    200
@@ -145,22 +155,28 @@ Tentar Renomear Produto B Com Nome de Produto A
     Log To Console         Conflito de nome: ${response.content}
     Set Global Variable    ${response}
 
+*** Keywords ***
 Criar Produto Para Carrinho
-    ${palavra}=         FakerLibrary.Word
-    ${sufixo}=          Generate Random String    5    [NUMBERS]
-    ${nome_produto}=    Set Variable    ${palavra}-${sufixo}
-    ${preco}=           Set Variable    777
-    ${descricao}=       Set Variable    Produto do Carrinho
-    ${quantidade}=      Set Variable    5
-    &{headers}=         Create Dictionary    Authorization=${auth_token}
-    &{payload}=         Create Dictionary
-    ...                 nome=${nome_produto}
-    ...                 preco=${preco}
-    ...                 descricao=${descricao}
-    ...                 quantidade=${quantidade}
-    ${response}=        POST On Session    ServeRest    /produtos    headers=${headers}    data=${payload}
-    ${id_produto}=      Set Variable    ${response.json()["_id"]}
-    Set Suite Variable  ${id_produto}
+    ${palavra}=           FakerLibrary.Word
+    ${numero}=            FakerLibrary.Random Int    1000    9999
+    ${nome_produto}=      Set Variable    ${palavra}_${numero}
+    ${preco}=             Set Variable    199
+    ${descricao}=         Set Variable    Produto do Carrinho
+    ${quantidade}=        Set Variable    5
+    &{headers}=           Create Dictionary    Authorization=${auth_token}
+    &{payload}=           Create Dictionary
+    ...                   nome=${nome_produto}
+    ...                   preco=${preco}
+    ...                   descricao=${descricao}
+    ...                   quantidade=${quantidade}
+    
+    ${response}=          POST On Session    ServeRest    /produtos    headers=${headers}    data=${payload}    expected_status=ANY
+    Log To Console        Produto criado: ${response.content}
+    Should Be Equal As Integers    ${response.status_code}    201
+
+    ${id_produto}=        Set Variable    ${response.json()["_id"]}
+    Set Suite Variable    ${id_produto}
+    Set Suite Variable    ${nome_produto}
 
 DELETE Produto Vinculado Ao Carrinho
     &{headers}=              Create Dictionary    Authorization=${auth_token}

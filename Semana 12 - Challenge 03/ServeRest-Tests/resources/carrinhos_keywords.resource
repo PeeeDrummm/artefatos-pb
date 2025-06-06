@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation    Keywords e Variáveis para Ações do Endpoint /carrinhos
 Resource         ../resources/common.resource
-Library          Collections
 Library          FakerLibrary
 Library          json
 

@@ -1,11 +1,11 @@
 *** Settings ***
 Documentation    Keywords e Variáveis para Ações do Endpoint /usuarios
-Library          FakerLibrary
 Resource         ../resources/common.resource
 Resource         ../data/dynamic/usuario_valido.robot
 Resource         ../data/static/emails_invalidos.robot
 Resource         ../data/static/emails_proibidos.robot
 Resource         ../data/static/senhas_invalidas.robot
+Library          FakerLibrary
 
 *** Keywords ***
 Carregar Dados de Usuário Válido

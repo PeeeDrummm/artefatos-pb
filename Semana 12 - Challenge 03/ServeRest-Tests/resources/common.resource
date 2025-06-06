@@ -1,9 +1,9 @@
 *** Settings ***
 Documentation    Recursos e utilidades comuns
+Resource         ../variables/env_variables.robot
 Library          RequestsLibrary
 Library          Collections
 Library          String
-Resource         ../variables/env_variables.robot
 
 *** Keywords ***
 Criar Sessão
