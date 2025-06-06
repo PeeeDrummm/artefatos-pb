@@ -27,7 +27,7 @@ O versionamento é feito por branches, garantindo um histórico limpo e rastreá
 - **Semana 09**: Base versionamento e programação Python
 - **Semana 10**: Base Testes Automatizados + Testes automatizados de APIs REST com Robot Framework
 - **Semana 11**: Testes automatizados de APIs REST com Robot Framework - Aprofundando com AI e AWS
-- **_[🚧 Em progresso]_** **Semana 12**: Challenge 03
+- **Semana 12**: Challenge 03
 
 ---
 
