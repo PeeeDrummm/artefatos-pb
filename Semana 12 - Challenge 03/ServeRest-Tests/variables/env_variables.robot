@@ -1,3 +1,3 @@
 *** Variables ***
 ${base_url}        https://compassuol.serverest.dev/
-${global_delay}    0s
+${global_delay}    1s
