@@ -1,4 +1,4 @@
-*** Variables ***    #Todos os e-mails Violam o padrão RFC de formato de e-mail
+*** Variables ***    #Todos e-mails que Violam o padrão RFC de formato de e-mail
 @{emails_invalidos} 
 ...    abc
 ...    abc@

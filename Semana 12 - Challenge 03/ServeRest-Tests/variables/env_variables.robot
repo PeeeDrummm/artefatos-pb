@@ -1,2 +1,6 @@
+*** Settings ***
+Documentation    URL para acesso a API e Delay Entre os Testes
+
 *** Variables ***
-${global_delay}    2s
+${base_url}        https://compassuol.serverest.dev/
+${global_delay}    0s

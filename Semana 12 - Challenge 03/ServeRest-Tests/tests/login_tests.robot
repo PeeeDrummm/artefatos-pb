@@ -2,8 +2,7 @@
 Documentation    Arquivo de Testes para o Endpoint /login
 Resource         ../resources/login_keywords.resource
 Resource         ../resources/produtos_keywords.resource
-Resource         ../variables/env_variables.robot
-Suite Setup      Criar Sessão
+Suite Setup      Setup Geral da Suite
 Test Teardown    Sleep    ${global_delay}
 
 *** Test Cases ***
@@ -25,7 +24,7 @@ Cenário: POST Login com Usuário Inexistente - 401
     POST Endpoint /login com Usuario Inexistente
     Validar Status Code    401
     Validar Mensagem de Erro Login    Email e/ou senha inválidos
-############### DEIXAR POR ÚLTIMO ###############
+
 Cenário: Token Expirado Após Login - 401
     [Tags]    POSTLOGIN    CT012
     Realizar Login Como Admin
