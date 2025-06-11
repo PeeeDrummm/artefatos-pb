@@ -61,6 +61,15 @@ Não deve cadastrar com email incorreto
     Submit signup form    ${user}
     Alert should be       Digite um e-mail válido
 
+Não deve cadastrar com senha < 6 digitoS
+    [Tags]     SenhaCurta
+    [Template]    Senha Curta
+    1
+    12
+    123
+    1234
+    12345
+
 Não deve cadastrar senha muito curta
     [Tags]    temp
     @{password_list}    Create List    1    12    123    1234    12345
@@ -75,3 +84,17 @@ Não deve cadastrar senha muito curta
 
         Alert should be    Informe uma senha com pelo menos 6 digitos
     END
+
+*** Keywords ***
+Senha Curta
+    [Arguments]    ${senha_curta}
+
+    ${user}    Create Dictionary    
+    ...    name=Pedro Afonso
+    ...    email=pedro.afonso@qa.gov.br
+    ...    password=${senha_curta}
+
+    Go to signup page
+    Submit signup form    ${user}
+
+    Alert should be    Informe uma senha com pelo menos 6 digitos

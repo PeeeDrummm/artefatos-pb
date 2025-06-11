@@ -1,7 +1,7 @@
 .env
 .env*
 .idea/
-node_modules/
+**/__pycache__/
 Aulas - CTFL - Curso Preparatório.pdf
 Glossário - Principais Termos.pdf
 Infográfico - Processo de Teste.pdf
