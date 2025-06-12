@@ -6,13 +6,12 @@ Test Teardown    Take Screenshot
 
 *** Test Cases ***
 Deve poder cadadastrar uma nova tarefa
+    [Tags]    critical
     ${data}                         Get fixture    tasks    create
 
-    Clean user from database        ${data}[user][email]
-    Insert user from database       ${data}[user]
+    Reset user from database        ${data}[user]
 
-    Submit login form               ${data}[user]
-    User should be logged in        ${data}[user][name]
+    Do login                        ${data}[user]
     Go to task form
     Submit task form                ${data}[task]
     Task should be registred        ${data}[task][name]
@@ -21,37 +20,24 @@ Não deve cadastrar tarefa com nome duplicado
     [Tags]     dup
     ${data}    Get fixture    tasks    duplicate
     
-    # Dado que eu tenho um novo usuário
-    Clean user from database     ${data}[user][email]
-    Insert user from database    ${data}[user]
+    Reset user from database      ${data}[user]
+    Create a new task from API    ${data}
 
-    # E que esse usuário já cadastrou uma tarefa
-    POST user session            ${data}[user]
-    POST a new task              ${data}[task]
+    Do login                      ${data}[user]
 
-    # E que estou logado na aplicação web
-    Submit login form            ${data}[user]
-    User should be logged in     ${data}[user][name]    
-
-    # Quando tento cadastrar essa tarefa que já foi cadastrada
     Go to task form
-    Submit task form             ${data}[task]
+    Submit task form              ${data}[task]
 
-    # Então devo ver uma notificação de duplicidade
-    Notice should be             Oops! Tarefa duplicada.
+    Notice should be              Oops! Tarefa duplicada.
 
 Não deve cadastrar uma nova tarefa quando atinge o limite de tags
     [Tags]     tags_limit
     ${data}    Get fixture    tasks    tags_limit
     
-    Clean user from database     ${data}[user][email]
-    Insert user from database    ${data}[user]
+    Reset user from database     ${data}[user]
+    Create a new task from API   ${data}
 
-    POST user session            ${data}[user]
-    POST a new task              ${data}[task]
-
-    Submit login form            ${data}[user]
-    User should be logged in     ${data}[user][name]    
+    Do login                     ${data}[user]    
 
     Go to task form
     Submit task form             ${data}[task]
