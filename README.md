@@ -28,7 +28,7 @@ O versionamento é feito por branches, garantindo um histórico limpo e rastreá
 - **Semana 10**: Base Testes Automatizados + Testes automatizados de APIs REST com Robot Framework
 - **Semana 11**: Testes automatizados de APIs REST com Robot Framework - Aprofundando com AI e AWS
 - **Semana 12**: Challenge 03
-- _[🚧 Em progresso]_ **Semana 13**: Introdução Automação Web
+- **Semana 13**: Introdução Automação Web
 
 ---
 
@@ -53,10 +53,14 @@ Cada evolução, estudo ou entrega é feita em uma branch separada e depois inte
 <!-- Automação e Testes -->
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat&logo=postman&logoColor=white)
 ![Robot Framework](https://img.shields.io/badge/Robot_Framework-000000?style=flat&logo=robotframework&logoColor=white)
+![Insomnia](https://img.shields.io/badge/Insomnia-4000BF?style=flat&logo=insomnia&logoColor=white)
 
 <!-- Infraestrutura e Nuvem -->
-![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat&logo=amazonwebservices&logoColor=white)
-![EC2](https://img.shields.io/badge/AWS_EC2-FF9900?style=flat&logo=amazonec2&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat&logo=amazonaws&logoColor=white)
+![AWS EC2](https://img.shields.io/badge/AWS_EC2-FF9900?style=flat&logo=amazonaws&logoColor=white)
+
+<!-- Banco de Dados -->
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white)
 
 <!-- Gerenciamento e Documentação -->
 ![Jira](https://img.shields.io/badge/Jira-0052CC?style=flat&logo=jira&logoColor=white)
