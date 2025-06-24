@@ -29,7 +29,8 @@ O versionamento é feito por branches, garantindo um histórico limpo e rastreá
 - **Semana 11**: Testes automatizados de APIs REST com Robot Framework - Aprofundando com AI e AWS
 - **Semana 12**: Challenge 03
 - **Semana 13**: Introdução Automação Web
-- **Semana 14**: Semana 14 - Aprofundando Automação Web + AI
+- **Semana 14**: Aprofundando Automação Web + AI
+- **_[🚧 Em progresso]_** Semana 15 & 16: Challenge Final
 
 ---
 
