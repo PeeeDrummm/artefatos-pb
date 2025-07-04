@@ -9,7 +9,7 @@ Aqui compartilho todos os documentos, entregas e estudos das sprints concluídas
 
 ## 📌 Organização do Repositório
 
-Todos os arquivos estão localizados na pasta `Documentos`, organizados por semana conforme os temas abordados na formação.  
+Todos os arquivos estão organizados por semana conforme os temas abordados na formação.  
 O versionamento é feito por branches, garantindo um histórico limpo e rastreável a cada entrega.
 
 ---
