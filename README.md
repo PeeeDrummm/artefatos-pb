@@ -44,39 +44,48 @@ Cada evolução, estudo ou entrega é feita em uma branch separada e depois inte
 ## 🛠️ Tecnologias e ferramentas utilizadas
 
 - **Versionamento**
-![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)
+
+>![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white)
+>![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)
 
 - **Desenvolvimento**
-![VS Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?style=flat&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
-![PyCharm](https://img.shields.io/badge/PyCharm-000000?style=flat&logo=pycharm&logoColor=white)
+
+>![VS Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?style=flat&logoColor=white)
+>![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+>![PyCharm](https://img.shields.io/badge/PyCharm-000000?style=flat&logo=pycharm&logoColor=white)
 
 - **Automação e Testes**
-![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat&logo=postman&logoColor=white)
-![Robot Framework](https://img.shields.io/badge/Robot_Framework-000000?style=flat&logo=robotframework&logoColor=white)
-![Insomnia](https://img.shields.io/badge/Insomnia-4000BF?style=flat&logo=insomnia&logoColor=white)
+
+>![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat&logo=postman&logoColor=white)
+>![Robot Framework](https://img.shields.io/badge/Robot_Framework-000000?style=flat&logo=robotframework&logoColor=white)
+>![Insomnia](https://img.shields.io/badge/Insomnia-4000BF?style=flat&logo=insomnia&logoColor=white)
 
 - **CI/CD e Integração Contínua**
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat&logo=githubactions&logoColor=white)
+
+>![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat&logo=githubactions&logoColor=white)
 
 - **IA e LLM**
-![Gemini API/LLM](https://img.shields.io/badge/Gemini_API-4285F4?style=flat&logo=google&logoColor=white)
+
+>![Gemini API/LLM](https://img.shields.io/badge/Gemini_API-4285F4?style=flat&logo=google&logoColor=white)
 
 - **Infraestrutura e Nuvem**
-![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat&logo=amazonaws&logoColor=white)
-![AWS EC2](https://img.shields.io/badge/AWS_EC2-FF9900?style=flat&logo=amazonaws&logoColor=white)
-![Render](https://img.shields.io/badge/Render-212121?style=flat&logo=render&logoColor=white)
+
+>![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat&logo=amazonaws&logoColor=white)
+>![AWS EC2](https://img.shields.io/badge/AWS_EC2-FF9900?style=flat&logo=amazonaws&logoColor=white)
+>![Render](https://img.shields.io/badge/Render-212121?style=flat&logo=render&logoColor=white)
 
 - **Banco de Dados**
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white)
+
+>![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white)
 
 - **Gerenciamento e Documentação**
-![Jira](https://img.shields.io/badge/Jira-0052CC?style=flat&logo=jira&logoColor=white)
-![Confluence](https://img.shields.io/badge/Confluence-172B4D?style=flat&logo=confluence&logoColor=white)
+
+>![Jira](https://img.shields.io/badge/Jira-0052CC?style=flat&logo=jira&logoColor=white)
+>![Confluence](https://img.shields.io/badge/Confluence-172B4D?style=flat&logo=confluence&logoColor=white)
 
 - **Outros**
-![Amazon Q Developer](https://img.shields.io/badge/Amazon_Q_Developer-232F3E?style=flat&logo=amazon&logoColor=white)
+
+>![Amazon Q Developer](https://img.shields.io/badge/Amazon_Q_Developer-232F3E?style=flat&logo=amazon&logoColor=white)
 
 ---
 
