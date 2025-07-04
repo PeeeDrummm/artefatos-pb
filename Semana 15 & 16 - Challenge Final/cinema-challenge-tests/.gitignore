@@ -1,0 +1,25 @@
+# Ignora tudo em logs, EXCETO index.html
+cinema-automation/logs/*
+!cinema-automation/logs/index.html
+
+# Cache Python
+**/__pycache__/
+*.pyc
+
+# Env
+.env
+.env.*
+
+# Ambiente virtual
+.venv/
+venv/
+
+# IDEs
+.vscode/
+.idea/
+
+# Arquivos temporários e de sistema
+*.log
+*.tmp
+.DS_Store
+Thumbs.db

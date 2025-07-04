@@ -1,0 +1,74 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - develop
+
+permissions:
+  contents: write    # para mesclar develop → main
+
+jobs:
+  test-and-merge:
+    name: 🧪 Run tests & Merge
+    runs-on: ubuntu-latest
+    env:
+      MONGO_URI:        ${{ secrets.MONGO_URI }}
+      JWT_SECRET:       ${{ secrets.JWT_SECRET }}
+      PAT:              ${{ secrets.PAT }}
+      GEMINI_API_KEY:   ${{ secrets.GEMINI_API_KEY }}
+      BROWSER:          chromium
+      HEADLESS:         true
+
+    steps:
+      # Checkout completo para permitir merge e acessos
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.PAT }}
+
+      # Python 3.11
+      - name: 🐍 Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # Instala libs e inicializa browser do Robot
+      - name: 📦 Install dependencies
+        run: |
+          pip install -r cinema-automation/requirements.txt
+          pip install robotframework robotframework-browser
+          rfbrowser init
+      # Executa testes (gera logs mesmo se falhar)
+      - name: 🧪 Run Robot Framework tests
+        working-directory: ./cinema-automation
+        run: |
+          mkdir -p logs
+          robot --outputdir logs tests/
+        continue-on-error: true
+
+      # Faz upload dos logs
+      - name: 📤 Upload logs artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: robot-logs
+          path: cinema-automation/logs/
+
+      # Interrompe se algum teste falhou
+      - name: 🚨 Abort if tests failed
+        run: |
+          if grep -q 'status="FAIL"' cinema-automation/logs/output.xml; then
+            echo "❌ Some tests failed. Aborting merge."
+            exit 1
+          fi
+      # Merge completo de develop → main
+      - name: 🔀 Merge develop into main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main
+          git checkout main
+          git merge --no-ff origin/develop -m "🔀 Merge develop → main [skip ci]"
+          git push https://x-access-token:${{ secrets.PAT }}@github.com/${{ github.repository }} main

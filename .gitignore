@@ -1,23 +1,64 @@
 # Variáveis de ambiente
 .env
-.env*
+.env.*
 
 # Configurações de IDE
 .idea/
+.vscode/
 
 # Cache do Python
 **/__pycache__/
 *.py[cod]
 
+# Ambientes virtuais Python
+.venv/
+venv/
+
 # Dependências do Node.js
 node_modules/
 **/node_modules/
 
-# Ambientes virtuais Python
-venv/
-.venv/
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
 
-# Arquivos de estudo e documentos
+# Coverage e instrumented libs
+lib-cov/
+coverage/
+.nyc_output/
+
+# npm-related artifacts
+.npm/
+*.tgz
+
+# ESLint cache
+.eslintcache
+
+# REPL history
+.node_repl_history
+
+# Logs
+logs/
+*.log
+*.tmp
+
+# cinema-automation logs: ignore tudo, exceto index.html
+cinema-automation/logs/*
+!cinema-automation/logs/index.html
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Swap e editor temporários
+*.swp
+*.swo
+
+# Arquivos de estudo e documentos (específicos)
 Aulas - CTFL - Curso Preparatório.pdf
 Glossário - Principais Termos.pdf
 Infográfico - Processo de Teste.pdf
